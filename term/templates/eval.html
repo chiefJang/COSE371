@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture Evaluation</title>
+  </head>
+  <body>
+    <b> Lecture Evaluation </b>
+    <br /><br /><br />
+
+    <b> View Lecture Evaluation </b>
+    <br /><br />
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        {% for lec in lecs_not_enroll %}
+        <tr>
+          <td>{{ lec[0] }}</td>
+          <td>{{ lec[1] }}</td>
+          <td>{{ lec[2] }}</td>
+          <td>{{ lec[3] }}</td>
+          <td>
+            <form action="/lecture_eval" method="post">
+              <input type="hidden" name="code" value="{{ lec[0] }}" />
+              <input type="hidden" name="name" value="{{ lec[1] }}" />
+              <input type="hidden" name="price" value="{{ lec[2] }}" />
+              <input type="hidden" name="tutor" value="{{ lec[3] }}" />
+              <input type="hidden" name="id" value="{{ids}}" />
+              <input type="hidden" name="password" value="{{passwords}}" />
+              <input type="submit" name="send" value="view" />
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br /><br />
+    <b> Write Lecture Evaluation </b>
+    <br /><br />
+
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        {% for lec in lecs_enroll %}
+        <tr>
+          <td>{{ lec[0] }}</td>
+          <td>{{ lec[1] }}</td>
+          <td>{{ lec[2] }}</td>
+          <td>{{ lec[3] }}</td>
+          <td>
+            <form action="/lecture_eval" method="post">
+              <input type="hidden" name="code" value="{{ lec[0] }}" />
+              <input type="hidden" name="name" value="{{ lec[1] }}" />
+              <input type="hidden" name="price" value="{{ lec[2] }}" />
+              <input type="hidden" name="tutor" value="{{ lec[3] }}" />
+              <input type="hidden" name="id" value="{{ids}}" />
+              <input type="hidden" name="password" value="{{passwords}}" />
+              <input type="submit" name="send" value="write" />
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <form action="/register" method="post">
+      <input type="submit" name="button" value="return" />
+      <input type="hidden" name="send" value="login" />
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+    </form>
+  </body>
+</html>

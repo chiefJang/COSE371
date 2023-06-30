@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>enrollment_confirm</title>
+  </head>
+  <body>
+    <b> enrollment</b>
+    <br /><br />
+
+    <table border="1">
+      <thead>
+        <th>tutor</th>
+        <th>tutee</th>
+        <th>subject</th>
+        <th>lecture name</th>
+        <th>price</th>
+      </thead>
+
+      <tbody>
+        {% for enroll in enrolls %}
+        <tr>
+          <td>{{ enroll[1] }}</td>
+          <td>{{ enroll[0] }}</td>
+          <td>{{ enroll[2] }}</td>
+          <td>{{ enroll[3] }}</td>
+          <td>{{ enroll[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+
+    <form action="/register" method="post">
+      <input type="submit" name="button" value="return" />
+      <input type="hidden" name="send" value="login" />
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+    </form>
+  </body>
+</html>

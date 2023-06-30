@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my_info_tutor</title>
+  </head>
+  <body>
+    <b> My lecture</b>
+    <br /><br />
+
+    <table border="1">
+      <thead>
+        <th>subject</th>
+        <th>lecture_name</th>
+        <th>tutee</th>
+        <th>price</th>
+      </thead>
+
+      <tbody>
+        {% for lec in my_lecture %}
+        <tr>
+          <td>{{ lec[0] }}</td>
+          <td>{{ lec[1] }}</td>
+          <td>{{ lec[2] }}</td>
+          <td>{{ lec[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+
+    <b> Registered Lecture </b>
+    <br /><br />
+
+    <table border="1">
+      <thead>
+        <th>subject</th>
+        <th>lecture_name</th>
+        <th>tutor</th>
+        <th>price</th>
+      </thead>
+
+      <tbody>
+        {% for Reg_lec in Registered_lecture %}
+        <tr>
+          <td>{{ Reg_lec[0] }}</td>
+          <td>{{ Reg_lec[1] }}</td>
+          <td>{{ Reg_lec[2] }}</td>
+          <td>{{ Reg_lec[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <form action="/register" method="post">
+      <input type="submit" name="button" value="return" />
+      <input type="hidden" name="send" value="login" />
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+    </form>
+  </body>
+</html>

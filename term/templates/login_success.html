@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Success</title>
+  </head>
+  <body>
+    <b> DB Online Learning Platform </b>
+    <br /><br />
+
+    <form action="/admin_function" method="post">
+      <label for="admin"> Admin function</label><br />
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+      <input type="submit" name="send" value="users info" />
+      <input type="submit" name="send" value="trades info" />
+    </form>
+    <br />
+
+    <form action="/view_lecture" method="post">
+      {% for account in accounts%}
+      <label for="view"> View lecture</label><br />
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+      <input type="hidden" name="role" value="{{account[3]}}" />
+      <input type="submit" name="send" value="my info" />
+      {% endfor %}
+    </form>
+    <a>===================================</a>
+
+    <table border="1">
+      <thead>
+        <th>popular subject</th>
+        <th>popular lecture</th>
+        <th>popular tutor</th>
+      </thead>
+
+      <tbody>
+        {% for user in popular %}
+        <tr>
+          <td>{{ user[0] }}</td>
+          <td>{{ user[1] }}</td>
+          <td>{{ user[2] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br /><br /><br />
+
+    <b> User Info </b><br /><br />
+
+    <form action="/user_info" method="post">
+      {% for account in accounts%}
+      <a
+        >current user: {{account[0]}} /
+        <input type="submit" name="send" value="Logout" /> </a
+      ><br />
+
+      <a>credit: {{account[1]}} </a><br />
+
+      <a>rating: {{account[2]}} </a>
+      {% endfor %}
+    </form>
+    
+    <br />
+
+    <b> Lectures </b><br />
+
+    <form action="/lectures" method="post">
+      <input type="submit" name="send" value="add" /><br />
+      {% for account in accounts%}
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+      <input type="hidden" name="role" value="{{account[3]}}" />
+      {% endfor %}
+    </form>
+
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        {% for lec in lecs %}
+        <tr>
+          <td>{{ lec[0] }}</td>
+          <td>{{ lec[1] }}</td>
+          <td>{{ lec[2] }}</td>
+          <td>{{ lec[3] }}</td>
+          <td>
+            <form action="/register_lecture" method="post">
+              <input type="hidden" name="code" value="{{ lec[0] }}" />
+              <input type="hidden" name="name" value="{{ lec[1] }}" />
+              <input type="hidden" name="price" value="{{ lec[2] }}" />
+              <input type="hidden" name="tutor" value="{{ lec[3] }}" />
+              <input type="hidden" name="id" value="{{ids}}" />
+              <input type="hidden" name="password" value="{{passwords}}" />
+              <input type="submit" name="send" value="register" />
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    <br /><br />
+    <b> Lecture Evaluation </b>
+    <br /><br />
+    <form action="/evaluation" method="post">
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+      <input type="submit" name="send" value="Check Evaluation">
+  </body>
+</html>

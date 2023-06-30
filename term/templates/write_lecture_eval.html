@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>write_lecture_eval</title>
+  </head>
+  <body>
+    <form action="/write_eval" method="post">
+      <label for="Message">Message : </label><br />
+      <input id="message" type="text" name="message" value="" /><br /><br />
+      <input type="submit" name="send" value="write" />
+      <input type="hidden" name="code" value="{{ code }}" />
+      <input type="hidden" name="name" value="{{ name }}" />
+      <input type="hidden" name="price" value="{{ price }}" />
+      <input type="hidden" name="tutor" value="{{ tutor }}" />
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+    </form>
+    <br /><br />
+    <form action="/register" method="post">
+      <input type="submit" name="button" value="cancel" />
+      <input type="hidden" name="send" value="login" />
+      <input type="hidden" name="id" value="{{ids}}" />
+      <input type="hidden" name="password" value="{{passwords}}" />
+    </form>
+  </body>
+</html>
